@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Result TextView -->
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#EDEDED"
+        android:gravity="end"
+        android:padding="16dp"
+        android:text="0"
+        android:textColor="#000"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Button Row 1 -->
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="C"
+        app:layout_constraintTop_toBottomOf="@id/resultTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/backButton" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="⌫"
+        app:layout_constraintTop_toBottomOf="@id/resultTextView"
+        app:layout_constraintEnd_toStartOf="@+id/divideButton" />
+
+    <Button
+        android:id="@+id/divideButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="÷"
+        app:layout_constraintTop_toBottomOf="@id/resultTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button Row 2 -->
+    <Button
+        android:id="@+id/multiplyButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="×"
+        app:layout_constraintTop_toBottomOf="@id/clearButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sevenButton" />
+
+    <Button
+        android:id="@+id/sevenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="7"
+        app:layout_constraintTop_toBottomOf="@id/clearButton"
+        app:layout_constraintEnd_toStartOf="@+id/eightButton" />
+
+    <Button
+        android:id="@+id/eightButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="8"
+        app:layout_constraintTop_toBottomOf="@id/clearButton"
+        app:layout_constraintEnd_toStartOf="@+id/nineButton" />
+
+    <Button
+        android:id="@+id/nineButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="9"
+        app:layout_constraintTop_toBottomOf="@id/clearButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button Row 3 -->
+    <Button
+        android:id="@+id/minusButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="−"
+        app:layout_constraintTop_toBottomOf="@id/multiplyButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fourButton" />
+
+    <Button
+        android:id="@+id/fourButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="4"
+        app:layout_constraintTop_toBottomOf="@id/multiplyButton"
+        app:layout_constraintEnd_toStartOf="@+id/fiveButton" />
+
+    <Button
+        android:id="@+id/fiveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="5"
+        app:layout_constraintTop_toBottomOf="@id/multiplyButton"
+        app:layout_constraintEnd_toStartOf="@+id/sixButton" />
+
+    <Button
+        android:id="@+id/sixButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="6"
+        app:layout_constraintTop_toBottomOf="@id/multiplyButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button Row 4 -->
+    <Button
+        android:id="@+id/plusButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="+"
+        app:layout_constraintTop_toBottomOf="@id/minusButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/oneButton" />
+
+    <Button
+        android:id="@+id/oneButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="1"
+        app:layout_constraintTop_toBottomOf="@id/minusButton"
+        app:layout_constraintEnd_toStartOf="@+id/twoButton" />
+
+    <Button
+        android:id="@+id/twoButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="2"
+        app:layout_constraintTop_toBottomOf="@id/minusButton"
+        app:layout_constraintEnd_toStartOf="@+id/threeButton" />
+
+    <Button
+        android:id="@+id/threeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="3"
+        app:layout_constraintTop_toBottomOf="@id/minusButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button Row 5 -->
+    <Button
+        android:id="@+id/equalsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="="
+        app:layout_constraintTop_toBottomOf="@id/plusButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ACButton" />
+
+    <Button
+        android:id="@+id/ACButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="AC"
+        app:layout_constraintTop_toBottomOf="@id/plusButton"
+        app:layout_constraintEnd_toStartOf="@+id/decimalButton" />
+
+    <Button
+        android:id="@+id/decimalButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="."
+        app:layout_constraintTop_toBottomOf="@id/plusButton"
+        app:layout_constraintEnd_toStartOf="@+id/zeroButton" />
+
+    <Button
+        android:id="@+id/zeroButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/CalcButton"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/plusButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

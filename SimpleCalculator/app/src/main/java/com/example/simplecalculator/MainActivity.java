@@ -6,13 +6,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
+import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView resultTextView;
+    private TextView operationTextView; // Add this field
     private double operand = 0.0;
     private String operation = "";
     private boolean isNewOperation = true;
+    private DecimalFormat decimalFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         resultTextView = findViewById(R.id.resultTextView);
+        operationTextView = findViewById(R.id.operationTextView); // Initialize the new TextView
+        decimalFormat = new DecimalFormat("#.########");
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
 
         setNumberClickListeners();
         setOperationClickListeners();
@@ -58,53 +64,85 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.ACButton).setOnClickListener(view -> resetAll());
     }
 
+    private void updateDisplay(String value) {
+        if (value.length() > 15) {
+            value = value.substring(0, 15);
+        }
+        resultTextView.setText(value);
+    }
+
     private void onNumberClick(View view) {
         Button button = (Button) view;
+        String currentText = resultTextView.getText().toString();
+        String digit = button.getText().toString();
+
         if (isNewOperation) {
-            resultTextView.setText(button.getText().toString());
+            updateDisplay(digit);
             isNewOperation = false;
+        } else if (currentText.equals("0")) {
+            updateDisplay(digit);
         } else {
-            resultTextView.append(button.getText().toString());
+            updateDisplay(currentText + digit);
         }
     }
 
     private void onOperationClick(String op) {
-        operand = Double.parseDouble(resultTextView.getText().toString());
-        operation = op;
-        isNewOperation = true;
+        try {
+            operand = Double.parseDouble(resultTextView.getText().toString());
+            operation = op;
+            isNewOperation = true;
+            // Update the operation display
+            operationTextView.setText(decimalFormat.format(operand) + " " + operation);
+        } catch (NumberFormatException e) {
+            clear();
+        }
     }
 
     private void onEqualsClick() {
-        double secondOperand = Double.parseDouble(resultTextView.getText().toString());
-        double result = 0.0;
+        if (operation.isEmpty()) return;
 
-        switch (operation) {
-            case "+":
-                result = operand + secondOperand;
-                break;
-            case "-":
-                result = operand - secondOperand;
-                break;
-            case "*":
-                result = operand * secondOperand;
-                break;
-            case "/":
-                if (secondOperand != 0) {
+        try {
+            double secondOperand = Double.parseDouble(resultTextView.getText().toString());
+            double result = 0.0;
+
+            // Update operation display to show complete expression
+            String expression = decimalFormat.format(operand) + " " + operation + " " +
+                              decimalFormat.format(secondOperand) + " =";
+            operationTextView.setText(expression);
+
+            switch (operation) {
+                case "+":
+                    result = operand + secondOperand;
+                    break;
+                case "-":
+                    result = operand - secondOperand;
+                    break;
+                case "*":
+                    result = operand * secondOperand;
+                    break;
+                case "/":
+                    if (secondOperand == 0) {
+                        updateDisplay("Error");
+                        operationTextView.setText("");
+                        isNewOperation = true;
+                        return;
+                    }
                     result = operand / secondOperand;
-                } else {
-                    resultTextView.setText("Error");
-                    isNewOperation = true;
-                    return;
-                }
-                break;
-        }
+                    break;
+            }
 
-        resultTextView.setText(new DecimalFormat("#.##").format(result));
-        isNewOperation = true;
+            updateDisplay(decimalFormat.format(result));
+            operation = "";
+            operand = result;
+            isNewOperation = true;
+        } catch (NumberFormatException e) {
+            clear();
+        }
     }
 
     private void clear() {
         resultTextView.setText("0");
+        operationTextView.setText("");
         isNewOperation = true;
     }
 
@@ -122,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         operand = 0.0;
         operation = "";
         resultTextView.setText("0");
+        operationTextView.setText("");
         isNewOperation = true;
     }
 }

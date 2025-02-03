@@ -3,18 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp">
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/nameDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Full Name: "/>
+        android:textSize="18sp"
+        android:text="Welcome, User!" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/sample_image"/>
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        android:src="@drawable/sample_image" />
 
 </LinearLayout>

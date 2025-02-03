@@ -3,24 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
-
-    <TextView
-        android:id="@+id/textViewFirstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Name: "/>
+    android:padding="20dp">
 
     <EditText
-        android:id="@+id/editTextLastName"
+        android:id="@+id/secondNameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Your Last Name"/>
+        android:hint="Enter Your Second Name" />
 
     <Button
-        android:id="@+id/buttonNext"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"/>
-
+        android:text="Next" />
 </LinearLayout>
